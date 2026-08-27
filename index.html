@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Демонстрационный макет сайта по подбору SPA-мастеров для отелей и SPA-комплексов.">
+    <title>SPA STAFF | Демонстрационный макет</title>
+    <link rel="preload" href="assets/fonts/manrope-cyrillic-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/manrope-cyrillic-800.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/hero-spa-staff.webp" as="image" type="image/webp" media="(min-width: 621px)" fetchpriority="high">
+    <link rel="preload" href="assets/hero-spa-staff-mobile-v2.webp" as="image" type="image/webp" media="(max-width: 620px)" fetchpriority="high">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">К основному содержанию</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="SPA STAFF, к началу страницы">
+          <span>SPA</span> STAFF
+        </a>
+
+        <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Открыть меню">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+
+        <nav class="primary-nav" id="primary-nav" aria-label="Основная навигация">
+          <a href="#service">Услуга</a>
+          <a href="#masters">Мастера</a>
+          <a href="#contact">Контакты</a>
+        </nav>
+
+        <a class="button button-small header-cta" href="#contact">Обсудить подбор</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <picture class="hero-picture">
+          <source media="(max-width: 620px)" srcset="assets/hero-spa-staff-mobile-v2.webp">
+          <img
+            class="hero-media"
+            src="assets/hero-spa-staff.webp"
+            alt="Три SPA-специалиста в коридоре современного отеля"
+            width="1672"
+            height="941"
+            fetchpriority="high"
+          >
+        </picture>
+        <div class="hero-scrim" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1 id="hero-title">Мастера для отелей и SPA-комплексов</h1>
+            <p>Сертифицированные специалисты из Таиланда и с острова Бали. Оформление и сопровождение берем на себя.</p>
+            <div class="hero-actions">
+              <a class="button" href="#contact">Обсудить подбор</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section scope" id="service" aria-labelledby="scope-title">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <h2 id="scope-title">Оформление и сопровождение берем на себя</h2>
+            <p>Компания комплектует штат SPA-специалистами и сопровождает партнеров в течение контракта.</p>
+          </div>
+
+          <div class="audience-grid" data-reveal>
+            <article class="audience-item">
+              <h3>Отели</h3>
+              <p>Специалисты для гостиничных SPA и объектов премиального уровня.</p>
+            </article>
+            <article class="audience-item">
+              <h3>SPA-салоны</h3>
+              <p>Мастера для самостоятельных салонов и day-SPA.</p>
+            </article>
+            <article class="audience-item">
+              <h3>Курорты</h3>
+              <p>Персонал для баз отдыха, курортов и оздоровительных комплексов.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section masters" id="masters" aria-labelledby="masters-title">
+        <div class="container masters-layout">
+          <figure class="masters-media" data-reveal>
+            <img
+              src="assets/masters-preparing-portrait-v3.webp"
+              alt="SPA-специалисты готовят массажный кабинет и рабочие материалы"
+              width="1122"
+              height="1402"
+              loading="lazy"
+            >
+          </figure>
+
+          <div class="masters-copy" data-reveal>
+            <h2 id="masters-title">Мастера для полного SPA-меню</h2>
+            <p>Специалисты проходят обучение традиционным техникам и SPA-программам в профильных школах.</p>
+
+            <ul class="technique-list">
+              <li>Традиционный тайский массаж</li>
+              <li>Тайский массаж с маслом</li>
+              <li>Парные программы</li>
+              <li>Пилинги и обертывания</li>
+            </ul>
+
+            <p class="note">Анкеты и резюме подходящих мастеров менеджер отправит после заявки.</p>
+            <a class="text-link text-link-dark" href="#contact">Обсудить подбор</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section responsibilities" id="responsibilities" aria-labelledby="responsibilities-title">
+        <div class="container responsibilities-layout">
+          <div class="responsibilities-copy" data-reveal>
+            <h2 id="responsibilities-title">Документы и рабочие вопросы закрывает поставщик</h2>
+            <p>Заказчик получает мастера с оформлением и дальнейшим сопровождением.</p>
+
+            <div class="responsibility-groups">
+              <div>
+                <h3>Оформление</h3>
+                <ul>
+                  <li>Разрешение на работу</li>
+                  <li>Регистрация и рабочая виза</li>
+                  <li>Медицинская книжка</li>
+                  <li>Страховка и налоги</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Сопровождение</h3>
+                <ul>
+                  <li>Поддержка партнеров 24/7</li>
+                  <li>Выплата заработной платы</li>
+                  <li>Жилье для мастера в Москве</li>
+                  <li>Решение рабочих вопросов</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <figure class="responsibilities-media" data-reveal>
+            <img
+              src="assets/onboarding-documents.webp"
+              alt="SPA-специалист и менеджер обсуждают рабочие документы"
+              width="1120"
+              height="1400"
+              loading="lazy"
+            >
+          </figure>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact" aria-labelledby="contact-title">
+        <div class="container contact-layout">
+          <div class="contact-copy" data-reveal>
+            <h2 id="contact-title">Обсудим задачу вашего объекта</h2>
+            <p>Оставьте имя и телефон. В рабочей версии менеджер свяжется с вами и уточнит требования к мастерам.</p>
+
+            <dl class="contact-placeholders">
+              <div>
+                <dt>Телефон</dt>
+                <dd>+7 (___) ___-__-__</dd>
+              </div>
+              <div>
+                <dt>Почта</dt>
+                <dd>hello@________.ru</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="mock-form" role="group" aria-label="Демонстрационная форма заявки" data-reveal>
+            <div class="field">
+              <label for="name">Ваше имя</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Имя">
+            </div>
+            <div class="field">
+              <label for="phone">Номер телефона</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__">
+            </div>
+            <div class="field">
+              <label for="email">Электронная почта</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="name@company.ru">
+            </div>
+            <div class="field">
+              <label for="object-type">Тип объекта</label>
+              <select id="object-type" name="object-type">
+                <option value="" selected>Выберите тип объекта</option>
+                <option value="hotel">Отель</option>
+                <option value="spa">SPA-салон</option>
+                <option value="resort">Курорт или комплекс</option>
+              </select>
+            </div>
+            <button class="button form-button" id="mock-submit" type="button">Обсудить подбор</button>
+            <p class="form-helper">Нажимая кнопку, пользователь соглашается с политикой обработки персональных данных.</p>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <a class="brand brand-footer" href="#top"><span>SPA</span> STAFF</a>
+        <div class="footer-contacts">
+          <p><span>Телефон</span>+7 (___) ___-__-__</p>
+          <p><span>Почта</span>hello@________.ru</p>
+        </div>
+        <div class="footer-meta">
+          <p>ООО «____________»</p>
+          <p>Домен и реквизиты будут добавлены после согласования</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
