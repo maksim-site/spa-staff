@@ -97,7 +97,6 @@ main:focus, section:focus { outline: none; }
 .primary-nav a { position: relative; }
 .primary-nav a:hover { opacity: .72; }
 .button.header-cta { min-height: 48px; padding: 11px 20px; border-radius: 12px; font-size: 14px; white-space: nowrap; justify-self: end; }
-.cta-short { display: none; }
 .nav-contact { display: none; }
 .menu-toggle { display: none; width: 44px; height: 44px; flex: 0 0 44px; align-items: center; justify-content: center; padding: 10px; border: 0; border-radius: 8px; background: transparent; color: var(--forest); transition: background-color 160ms ease, transform 160ms ease; }
 .menu-toggle:hover { background: #123c2d08; }
@@ -356,25 +355,19 @@ html:not(.js) .form-button { display: none; }
   .nav-contact { display: grid; gap: 4px; padding-top: 10px; margin-top: 4px; border-top: 1px solid var(--line); }
   .primary-nav .nav-contact .button { justify-content: center; min-height: 48px; padding: 10px 16px; border: 1px solid var(--gold); font-size: 15px; }
   .primary-nav .nav-contact .button:hover { background: var(--gold-hover); opacity: 1; }
-  .primary-nav .nav-contact .nav-phone { justify-content: center; min-height: 44px; font-size: 15px; border: 0; }
   html:not(.js) .site-header { position: relative; height: auto; min-height: var(--header-height); }
   html:not(.js) .header-inner { padding-block: 10px; }
   html:not(.js) .primary-nav { position: static; grid-column: 1/-1; width: 100%; max-height: none; box-shadow: none; border: 0; padding: 0; }
 }
 @media(max-width:680px) {
-  .header-inner { gap: 8px; }
-  .button.header-cta { padding: 9px 12px; font-size: 12.5px; }
+  .header-inner { grid-template-columns: minmax(0,1fr) 44px; gap: 8px; }
+  .button.header-cta { display: none; }
+  .menu-toggle { grid-column: 2; }
   .primary-nav { right: 10px; width: calc(100vw - 20px); padding: 8px 14px; border-radius: 16px; }
   .primary-nav a { min-height: 50px; padding: 10px 5px; font-size: 15.5px; }
 }
-@media(max-width:430px) {
-  .header-cta .cta-full { display: none; }
-  .header-cta .cta-short { display: inline; }
-  .button.header-cta { min-width: 72px; padding-inline: 10px; }
-}
 @media(max-width:360px) {
   .header-inner { gap: 6px; }
-  .brand-tagline { display: none; }
 }
 @media(prefers-reduced-motion:reduce) {
   html { scroll-behavior: auto; }
