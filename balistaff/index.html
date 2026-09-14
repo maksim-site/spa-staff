@@ -9,10 +9,12 @@
   <title>БАЛИСТАФФ — подбор и сопровождение мастеров с Бали</title>
   <link rel="preload" href="assets/fonts/manrope-cyrillic-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/manrope-cyrillic-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/hero-women-v1-desktop.webp" as="image" media="(min-width: 621px)" fetchpriority="high">
-  <link rel="preload" href="assets/hero-women-v1-mobile.webp" as="image" media="(max-width: 620px)" fetchpriority="high">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260914-header-light">
+  <link rel="preload" href="assets/hero-women-v1-desktop.webp" as="image" media="(min-width: 621px), (orientation: landscape)" fetchpriority="high">
+  <link rel="preload" href="assets/hero-women-mobile-full-v1.webp" as="image" media="(max-width: 620px) and (orientation: portrait)" fetchpriority="high">
+  <link rel="icon" href="assets/favicon-32.png?v=20260914-square" type="image/png" sizes="32x32">
+  <link rel="icon" href="assets/favicon.svg?v=20260914-square" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20260914-square" sizes="180x180">
+  <link rel="stylesheet" href="styles.css?v=20260914-mobile-outpaint-3">
   <script src="script.js?v=20260914-header-light" defer></script>
 </head>
 <body>
@@ -31,7 +33,7 @@
   </header>
   <main id="main" tabindex="-1">
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <picture class="hero-picture"><source media="(max-width: 620px)" srcset="assets/hero-women-v1-mobile.webp"><img class="hero-media" src="assets/hero-women-v1-desktop.webp" width="1672" height="941" alt="Две балийские массажистки в SPA-кабинете — иллюстрация, созданная с помощью ИИ" fetchpriority="high"></picture>
+      <picture class="hero-picture"><source media="(max-width: 620px) and (orientation: portrait)" srcset="assets/hero-women-mobile-full-v1.webp" width="842" height="1868"><img class="hero-media" src="assets/hero-women-v1-desktop.webp" width="1672" height="941" alt="Две балийские массажистки в SPA-кабинете — иллюстрация, созданная с помощью ИИ" fetchpriority="high"></picture>
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="container hero-inner"><div class="hero-copy">
         <h1 id="hero-title">Мастера с Бали<br>для отелей и SPA</h1>
