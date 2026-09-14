@@ -41,7 +41,7 @@ window.addEventListener('scroll', syncHeader, { passive: true });
 window.addEventListener('pageshow', syncHeader);
 if (menuButton && navigation) {
   const header = document.querySelector('.site-header');
-  const mobile = window.matchMedia('(max-width: 1080px)');
+  const mobile = window.matchMedia('(max-width: 720px)');
   let menuScrollY = 0;
   const setMenu = (open, returnFocus = false) => {
     menuButton.setAttribute('aria-expanded', String(open));
