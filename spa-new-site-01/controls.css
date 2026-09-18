@@ -1,5 +1,6 @@
 /* Local refinement: shared disclosure motion and touch-sized controls. */
 :root { --disclosure-ease: cubic-bezier(.22, 1, .36, 1); }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .menu-panel.is-animating,
 .faq-answer.is-animating {
   overflow: hidden;
@@ -75,6 +76,19 @@
 .footer-contact span { font-size: 13px; margin-top: 0; }
 
 @media (max-width: 620px) {
+  .header-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    container-type: inline-size;
+  }
+  .header-inner .brand { min-width: 0; justify-self: start; }
+  .header-inner .brand > span { font-size: clamp(16px, 7cqw, 23px); }
+  .mobile-menu { min-width: 0; }
+  .hero-copy { container-type: inline-size; }
+  .hero h1 { font-size: clamp(20px, 11cqw, 57px); margin-inline: 0; }
+  .formats-layout > *, .request-layout > * { min-width: 0; }
+  .has-tabs .format-tabs { flex-wrap: wrap; column-gap: 8px; }
   .mobile-menu summary {
     gap: 10px;
     min-width: 118px;
