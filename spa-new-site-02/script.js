@@ -1,16 +1,47 @@
 'use strict';
-const menu = document.querySelector('.menu-toggle');
-const nav = document.querySelector('#navigation');
+const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+const root=document.documentElement;
+document.addEventListener('keydown',()=>root.classList.add('using-keyboard'),true);
+document.addEventListener('pointerdown',()=>root.classList.remove('using-keyboard'),true);
+const menu=document.querySelector('.menu-toggle');
+const nav=document.querySelector('#navigation');
 if(menu && nav){
-  document.documentElement.classList.add('js'); menu.hidden=false;
-  const closeMenu=(focus=false)=>{menu.setAttribute('aria-expanded','false');menu.querySelector('.menu-label').textContent='Меню';nav.classList.remove('is-open');if(focus)menu.focus();};
-  menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.querySelector('.menu-label').textContent=open?'Закрыть':'Меню';nav.classList.toggle('is-open',open);});
-  nav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu();});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.getAttribute('aria-expanded')==='true')closeMenu(true);});
-  document.addEventListener('click',e=>{if(!e.target.closest('.header'))closeMenu();});
-  document.addEventListener('focusin',e=>{if(!e.target.closest('.header'))closeMenu();});
-  matchMedia('(min-width: 981px)').addEventListener('change',()=>closeMenu());
+  root.classList.add('js');menu.hidden=false;
+  const mobile=matchMedia('(max-width: 980px)');
+  const setMenu=open=>{
+    const expanded=mobile.matches&&open;
+    menu.setAttribute('aria-expanded',String(expanded));
+    menu.querySelector('.menu-label').textContent=expanded?'Закрыть':'Меню';
+    nav.classList.toggle('is-open',expanded);
+    nav.inert=mobile.matches&&!expanded;
+    if(nav.inert)nav.setAttribute('aria-hidden','true');else nav.removeAttribute('aria-hidden');
+  };
+  const closeMenu=(focus=false)=>{setMenu(false);if(focus)menu.focus();};
+  menu.addEventListener('click',()=>setMenu(menu.getAttribute('aria-expanded')!=='true'));
+  nav.addEventListener('click',event=>{if(event.target.closest('a'))closeMenu();});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.getAttribute('aria-expanded')==='true')closeMenu(true);});
+  document.addEventListener('click',event=>{if(!event.target.closest('.header'))closeMenu();});
+  document.addEventListener('focusin',event=>{if(!event.target.closest('.header'))closeMenu();});
+  mobile.addEventListener('change',()=>closeMenu());
+  window.addEventListener('pageshow',()=>closeMenu());
+  setMenu(false);
 }
+// Native details keep their keyboard and no-JS behavior. Only the answer fades in.
+const answerAnimations=new Set();
+document.querySelectorAll('.faq-list details').forEach(details=>{
+  const answer=details.querySelector('p');
+  let animation;
+  const cancel=()=>{if(animation){animation.cancel();answerAnimations.delete(animation);animation=null;}};
+  details.querySelector('summary').addEventListener('click',cancel);
+  details.addEventListener('toggle',()=>{
+    cancel();
+    if(!details.open||reducedMotion.matches||root.classList.contains('using-keyboard')||!answer.animate)return;
+    animation=answer.animate([{opacity:0,transform:'translateY(-4px)'},{opacity:1,transform:'translateY(0)'}],{duration:180,easing:'cubic-bezier(.22,1,.36,1)'});
+    answerAnimations.add(animation);
+    animation.onfinish=()=>{answerAnimations.delete(animation);animation=null;};
+  });
+});
+reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches){answerAnimations.forEach(animation=>animation.cancel());answerAnimations.clear();}});
 // Anchors remain native. #top targets the body, before the header.
 const form=document.querySelector('#request-form');
 if(form){
