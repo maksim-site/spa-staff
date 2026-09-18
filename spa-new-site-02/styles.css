@@ -34,10 +34,11 @@
 .text-link{transition:color 160ms ease,text-underline-offset 160ms ease}
 input:not([type=checkbox]),select{transition:border-color 160ms ease,background-color 160ms ease}
 input:not([type=checkbox]):focus,select:focus{background-color:#304f62}
+.faq-list details.is-animating{overflow:hidden}
 .faq-list summary{position:relative;padding-right:30px;transition:color 160ms ease}
-.faq-list summary:before,.faq-list summary:after{content:'';position:absolute;right:3px;top:50%;width:12px;height:1px;background:currentColor;transition:transform 180ms cubic-bezier(.22,1,.36,1),opacity 160ms ease}
+.faq-list details>summary:before,.faq-list details>summary:after{content:'';position:absolute;right:3px;top:50%;width:12px;height:1px;background:currentColor;transition:transform 180ms cubic-bezier(.22,1,.36,1),opacity 160ms ease}
 .faq-list summary:after{transform:rotate(90deg)}
-.faq-list details[open]>summary:after{content:'';transform:rotate(0);opacity:0}
+.faq-list details[open]:not(.is-closing)>summary:after{content:'';transform:rotate(0);opacity:0}
 @media(hover:hover) and (pointer:fine){.button:not(:disabled):hover{transform:translateY(-2px)}.button-light:hover{background:var(--accent)}.button-outline:hover{background:var(--paper);color:var(--navy)}.menu-toggle:hover{background:#ffffff0c;border-color:var(--accent)}.nav-links>a:hover{color:var(--accent)}.nav-links>a:hover:after{transform:scaleX(1)}.text-link:hover{text-decoration:underline;text-underline-offset:4px}.faq-list summary:hover{color:#57717e}.button:not(:disabled):active{transform:scale(.98)}}
 .using-keyboard *,.using-keyboard *:before,.using-keyboard *:after{transition:none!important;animation:none!important}
 @media(prefers-reduced-motion:reduce){.button,.menu-toggle,.js .header nav{transform:none!important}}

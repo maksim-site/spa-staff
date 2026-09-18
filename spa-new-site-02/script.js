@@ -37,22 +37,42 @@ if(menu && nav){
   window.addEventListener('pageshow',()=>closeMenu());
   setMenu(false);
 }
-// Native details keep their keyboard and no-JS behavior. Only the answer fades in.
-const answerAnimations=new Set();
+// Keep native details as the no-JS fallback; animate the whole row in both directions.
+const activeAccordions=new Set();
 document.querySelectorAll('.faq-list details').forEach(details=>{
-  const answer=details.querySelector('p');
-  let animation;
-  const cancel=()=>{if(animation){animation.cancel();answerAnimations.delete(animation);animation=null;}};
-  details.querySelector('summary').addEventListener('click',cancel);
-  details.addEventListener('toggle',()=>{
-    cancel();
-    if(!details.open||reducedMotion.matches||root.classList.contains('using-keyboard')||!answer.animate)return;
-    animation=answer.animate([{opacity:0,transform:'translateY(-4px)'},{opacity:1,transform:'translateY(0)'}],{duration:180,easing:'cubic-bezier(.22,1,.36,1)'});
-    answerAnimations.add(animation);
-    animation.onfinish=()=>{answerAnimations.delete(animation);animation=null;};
+  const summary=details.querySelector('summary');
+  let animation=null,expanded=details.open;
+  const settle=()=>{
+    if(animation){animation.onfinish=null;animation.cancel();animation=null;}
+    details.open=expanded;
+    details.classList.remove('is-animating','is-closing');
+    summary.removeAttribute('aria-expanded');
+    activeAccordions.delete(settle);
+  };
+  summary.addEventListener('click',event=>{
+    event.preventDefault();
+    const start=details.getBoundingClientRect().height;
+    expanded=!(animation?expanded:details.open);
+    if(animation){animation.onfinish=null;animation.cancel();animation=null;}
+    if(reducedMotion.matches||root.classList.contains('using-keyboard')||!details.animate){settle();return;}
+    // Keep the answer rendered while closing, and reverse from its current height.
+    details.open=true;
+    const fullHeight=details.getBoundingClientRect().height;
+    const closedHeight=summary.getBoundingClientRect().height+details.offsetHeight-details.clientHeight;
+    const end=expanded?fullHeight:closedHeight;
+    summary.setAttribute('aria-expanded',String(expanded));
+    details.classList.add('is-animating');
+    details.classList.toggle('is-closing',!expanded);
+    activeAccordions.add(settle);
+    animation=details.animate([{height:start+'px'},{height:end+'px'}],{
+      duration:240,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'
+    });
+    animation.onfinish=settle;
   });
 });
-reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches){answerAnimations.forEach(animation=>animation.cancel());answerAnimations.clear();}});
+const settleAccordions=()=>activeAccordions.forEach(settle=>settle());
+window.addEventListener('resize',settleAccordions);
+reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)settleAccordions();});
 // Other anchors stay native; the logo returns immediately to the true body top.
 const form=document.querySelector('#request-form');
 if(form){
