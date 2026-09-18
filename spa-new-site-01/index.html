@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#FAF8FB">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Подбор и сопровождение SPA-мастеров для отелей, SPA-комплексов и курортов.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'">
+  <title>SPA Staff — SPA-мастера для бизнеса</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/onest-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=20260915-controls">
+  <link rel="stylesheet" href="controls.css?v=20260915-cleanup">
+  <script src="script.js?v=20260918-short-form" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="SPA Staff — в начало"><span>SPA Staff</span></a>
+      <nav class="desktop-nav" aria-label="Главная навигация"><a href="#expertise">Направления</a><a href="#process">Как работаем</a><a class="header-cta" href="#request">Обсудить подбор</a></nav>
+      <details class="mobile-menu"><summary aria-label="Меню сайта"><span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span><span class="menu-label">Меню</span></summary><div class="menu-panel" id="mobile-navigation"><nav aria-label="Мобильная навигация"><a href="#expertise">Направления</a><a href="#formats">Для вашего объекта</a><a href="#process">Как работаем</a><a class="header-cta" href="#request">Обсудить подбор</a></nav></div></details>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Подбор и сопровождение персонала</p>
+        <h1 id="hero-title">SPA-мастера.<br><span>В вашей команде.</span></h1>
+        <p class="hero-lead">Для отелей, SPA-комплексов и курортов.<br class="desktop-break"> Подбираем специалистов под ваши процедуры и формат работы.</p>
+        <a class="button" href="#request">Обсудить подбор</a>
+      </div>
+      <div class="hero-band">
+        <picture><source media="(max-width: 640px)" srcset="assets/hero-consultation-v2-small.webp"><img src="assets/hero-consultation-v2.webp" alt="SPA-мастер беседует с гостьей перед процедурой в зоне консультации." width="1400" height="933" fetchpriority="high"></picture>
+        <div class="hero-note"><p class="eyebrow">Команда под ваш формат</p><p class="hero-note-title">Отдельный мастер <br>или команда <br>для SPA</p><p>Начинаем с задач<br class="wide-only"> вашего объекта.</p></div>
+      </div>
+    </section>
+
+    <section class="section container expertise" id="expertise" aria-labelledby="expertise-title">
+      <div class="expertise-copy" data-reveal>
+        <p class="eyebrow">Направления подготовки</p>
+        <h2 id="expertise-title">Ваши процедуры.<br><span>Нужные навыки.</span></h2>
+        <p class="section-intro">Отталкиваемся от SPA-меню. В подборе учитываем техники, практический опыт и формат общения с гостями.</p>
+        <div class="service-list">
+          <article><h3>Массаж</h3><p>Балийские техники с маслом, расслабляющие программы, массаж отдельных зон.</p></article>
+          <article><h3>SPA-ритуалы</h3><p>Сочетание процедур в одной программе и работа двух мастеров в парных сеансах.</p></article>
+          <article><h3>Уход за телом</h3><p>Пилинги, обёртывания и уходовые процедуры в соответствии с меню вашего объекта.</p></article>
+        </div>
+        <p class="qualification-note">Навыки и подготовку конкретного специалиста обсуждаем по резюме. Менеджер отправляет кандидатов после обращения.</p>
+      </div>
+      <figure class="expertise-photo" data-reveal><picture><source media="(max-width: 640px)" srcset="assets/treatment-scalp-v2-small.webp"><img src="assets/treatment-scalp-v2.webp" alt="Массажистка сидит у изголовья стола и выполняет массаж головы. Голова гостьи лежит на полотенце." width="900" height="1125" loading="lazy"></picture></figure>
+    </section>
+
+    <section class="formats-section" id="formats" aria-labelledby="formats-title">
+      <div class="container formats-layout" data-reveal>
+        <div><p class="eyebrow">Подбор под задачу</p><h2 id="formats-title">У каждого SPA<br>свой ритм.</h2><p class="section-intro">Для начала важно понять, как устроен ваш объект и где нужна помощь команде.</p></div>
+        <div class="format-selector">
+          <div class="format-tabs" aria-label="Тип объекта"><button type="button" id="tab-hotel" data-format="hotel">Отель</button><button type="button" id="tab-spa" data-format="spa">SPA-комплекс</button><button type="button" id="tab-resort" data-format="resort">Курорт</button></div>
+          <div class="format-panel" id="panel-hotel" data-panel="hotel"><h3>Часть гостиничного сервиса</h3><p>Подбираем специалистов с учётом меню процедур, стандартов обслуживания и взаимодействия с командой отеля.</p><ul class="tag-list" aria-label="Что обсудим"><li>График работы</li><li>Язык общения</li><li>Меню процедур</li></ul><a class="text-link" href="#request">Обсудить подбор для отеля</a></div>
+          <div class="format-panel" id="panel-spa" data-panel="spa"><h3>Под ваши SPA-программы</h3><p>Уточняем основные техники, длительность сеансов и необходимость совместной работы мастеров.</p><ul class="tag-list" aria-label="Что обсудим"><li>Специализация</li><li>Парные программы</li><li>Загрузка кабинетов</li></ul><a class="text-link" href="#request">Обсудить подбор для SPA</a></div>
+          <div class="format-panel" id="panel-resort" data-panel="resort"><h3>С учётом сезона и локации</h3><p>Обсуждаем период работы, ожидаемую загрузку SPA и организационные условия на территории объекта.</p><ul class="tag-list" aria-label="Что обсудим"><li>Период работы</li><li>Размер команды</li><li>Условия на объекте</li></ul><a class="text-link" href="#request">Обсудить подбор для курорта</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container process" id="process" aria-labelledby="process-title">
+      <div class="section-heading" data-reveal><div><p class="eyebrow">Как строится сотрудничество</p><h2 id="process-title">От первого разговора<br>до работы на объекте.</h2></div></div>
+      <ol class="process-list" data-reveal>
+        <li><h3>Обсуждаем задачу</h3><p>Формат объекта, процедуры, количество мастеров и желаемый период работы.</p></li>
+        <li><h3>Знакомим с кандидатами</h3><p>Менеджер направляет резюме. Вы обсуждаете подготовку и опыт специалистов.</p></li>
+        <li><h3>Согласуем условия</h3><p>Стоимость, сроки, документы и организационные вопросы — в рамках договора.</p></li>
+        <li><h3>Остаёмся на связи</h3><p>Сопровождение во время работы: взаимодействие с мастерами и текущие вопросы.</p></li>
+      </ol>
+    </section>
+
+    <!-- Reserved future section: approved cases/testimonials only after client materials and permission. -->
+    <section class="request-section" id="request" aria-labelledby="request-title">
+      <div class="container request-layout">
+        <div class="request-copy" data-reveal><p class="eyebrow">Начнём с вашего запроса</p><h2 id="request-title">Кого вы ищете<br>в команду?</h2><p class="section-intro">Оставьте имя, телефон и количество мастеров. Менеджер уточнит детали и предложит подходящих кандидатов.</p>
+          <div class="faq"><details><summary>Можно подобрать одного мастера?<span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-answer"><p>В запросе можно указать одного специалиста или несколько. Доступность кандидатов и условия менеджер уточняет индивидуально.</p></div></details><details><summary>Где посмотреть резюме?<span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-answer"><p>Резюме направляет менеджер после обращения. Так можно сразу обсудить кандидатов, подходящих под ваши процедуры и условия работы.</p></div></details><details><summary>Что ещё уточнит менеджер?<span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-answer"><p>Тип и расположение объекта, специализацию и желаемый период работы. Эти детали обсудим лично.</p></div></details></div>
+        </div>
+        <form class="request-form" id="request-form" novalidate aria-labelledby="form-title">
+          <div class="form-heading"><h3 id="form-title">Запрос на подбор</h3></div>
+          <div class="form-grid">
+            <div class="field field-wide"><label for="name">Ваше имя</label><input id="name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="Как к вам обращаться" aria-describedby="name-error" required><span class="field-error" id="name-error"></span></div>
+            <div class="field field-wide"><label for="phone">Телефон</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" placeholder="+7 999 123-45-67" aria-describedby="phone-error" required><span class="field-error" id="phone-error"></span></div>
+            <div class="field field-wide"><label for="count">Количество мастеров</label><input id="count" name="count" type="number" min="1" max="100" step="1" inputmode="numeric" placeholder="Например, 2" aria-describedby="count-error" required><span class="field-error" id="count-error"></span></div>
+          </div>
+          <button class="button form-button" id="check-request" type="submit" disabled>Получить кандидатов</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+          <noscript><p class="form-demo">Онлайн-отправка пока недоступна.</p></noscript>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand" href="#top"><span>SPA Staff</span></a><nav aria-label="Навигация в подвале"><a href="#expertise">Направления</a><a href="#process">Как работаем</a></nav><div class="footer-contact"><p>Контакты</p><span>Телефон: —</span><span>Почта: —</span></div></div></footer>
+</body>
+</html>
