@@ -4,7 +4,7 @@ document.documentElement.classList.add('js');
 
 // One-time entrance for content below the fold. Native scrolling stays untouched.
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const revealItems = [...document.querySelectorAll('.section-heading, .audience-item, .masters-media, .masters-copy, .responsibilities-copy, .responsibility-groups > div, .support-note, .contact-copy')];
+const revealItems = [...document.querySelectorAll('.section-heading, .expertise-heading, .expertise-body, .process-list li, .audience-item, .masters-media, .masters-copy, .responsibilities-copy, .responsibility-groups > div, .support-note, .contact-copy')];
 if (!reducedMotion.matches && 'IntersectionObserver' in window) {
   const reveal = (element, instant = false) => {
     if (instant) element.classList.add('reveal-instant');
@@ -95,22 +95,8 @@ const form = document.getElementById('inquiry-form');
 if (form) {
   const status = document.getElementById('form-status');
   const submitButton = document.getElementById('inquiry-submit');
-  const ids = ['name', 'phone', 'email', 'object-type', 'specialization', 'quantity', 'consent'];
+  const ids = ['name', 'phone', 'quantity', 'consent'];
   let attempted = false;
-  const contactButtons = [...form.querySelectorAll('[data-contact-method]')];
-  const setContactMethod = (method) => {
-    for (const id of ['phone', 'email']) {
-      const input = document.getElementById(id);
-      const active = id === method;
-      input.hidden = !active; input.disabled = !active; input.required = active;
-      input.removeAttribute('aria-invalid');
-      const error = document.getElementById(`${id}-error`);
-      error.textContent = ''; error.hidden = !active;
-    }
-    contactButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.contactMethod === method)));
-    status.textContent = '';
-  };
-  contactButtons.forEach(button => button.addEventListener('click', () => setContactMethod(button.dataset.contactMethod)));
   const phone = document.getElementById('phone');
   phone.addEventListener('input', () => {
     const raw = phone.value;
@@ -150,14 +136,11 @@ if (form) {
   const errorFor = (field) => {
     const value = field.value.trim();
     switch (field.id) {
-      case 'name': return value.length >= 2 ? '' : 'Укажите имя: не меньше двух символов.';
+      case 'name': return value.length >= 2 ? '' : 'Укажите имя.';
       case 'phone': {
         const digits = value.replace(/\D/g, '');
         return /^[+\d\s()\-]+$/.test(value) && (digits.startsWith('7') ? digits.length === 11 : digits.length >= 10 && digits.length <= 15) ? '' : 'Введите номер телефона полностью.';
       }
-      case 'email': return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : 'Укажите почту, например name@company.ru.';
-      case 'object-type': return value ? '' : 'Выберите тип вашего объекта.';
-      case 'specialization': return value ? '' : 'Выберите направление или обсуждение с менеджером.';
       case 'quantity': return /^(?:[1-9]|10|more)$/.test(value) ? '' : 'Выберите количество мастеров.';
       case 'consent': return field.checked ? '' : 'Для продолжения отметьте согласие.';
       default: return '';
