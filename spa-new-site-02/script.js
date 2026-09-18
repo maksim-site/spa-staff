@@ -18,7 +18,18 @@ if(menu && nav){
   };
   const closeMenu=(focus=false)=>{setMenu(false);if(focus)menu.focus();};
   menu.addEventListener('click',()=>setMenu(menu.getAttribute('aria-expanded')!=='true'));
-  nav.addEventListener('click',event=>{if(event.target.closest('a'))closeMenu();});
+  nav.addEventListener('click',event=>{
+    const link=event.target.closest('a[href^="#"]');
+    if(!link||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+    const target=document.getElementById(link.hash.slice(1));
+    if(!target)return;
+    event.preventDefault();closeMenu();
+    if(location.hash!==link.hash)history.pushState(null,'',link.hash);
+    const temporaryFocus=!target.hasAttribute('tabindex');
+    if(temporaryFocus){target.setAttribute('tabindex','-1');target.addEventListener('blur',()=>target.removeAttribute('tabindex'),{once:true});}
+    target.focus({preventScroll:true});
+    target.scrollIntoView({behavior:reducedMotion.matches?'auto':'smooth',block:'start'});
+  });
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.getAttribute('aria-expanded')==='true')closeMenu(true);});
   document.addEventListener('click',event=>{if(!event.target.closest('.header'))closeMenu();});
   document.addEventListener('focusin',event=>{if(!event.target.closest('.header'))closeMenu();});
@@ -42,7 +53,7 @@ document.querySelectorAll('.faq-list details').forEach(details=>{
   });
 });
 reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches){answerAnimations.forEach(animation=>animation.cancel());answerAnimations.clear();}});
-// Anchors remain native. #top targets the body, before the header.
+// Other anchors stay native; the logo returns immediately to the true body top.
 const form=document.querySelector('#request-form');
 if(form){
  const submit=document.querySelector('#submit');submit.disabled=false;
